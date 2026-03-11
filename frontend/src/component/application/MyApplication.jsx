@@ -19,7 +19,7 @@ const MyApplication = () => {
     try {
       if (user && user.role === "Employer") {
         axios
-          .get("http://localhost:3000/api/v1/application/employer/getall", {
+          .get("https://job-seeker-application-npnc.vercel.app/api/v1/application/employer/getall", {
             withCredentials: true,
           })
           .then((res) => {
@@ -27,7 +27,7 @@ const MyApplication = () => {
           });
       } else {
         axios
-          .get("http://localhost:3000/api/v1/application/jobseeker/getall", {
+          .get("https://job-seeker-application-npnc.vercel.app/api/v1/application/jobseeker/getall", {
             withCredentials: true,
           })
           .then((res) => {
@@ -46,7 +46,7 @@ const MyApplication = () => {
   const deleteApplication = (id) => {
     try {
       axios
-        .delete(`http://localhost:3000/api/v1/application/delete/${id}`, {
+        .delete(`https://job-seeker-application-npnc.vercel.app/api/v1/application/delete/${id}`, {
           withCredentials: true,
         })
         .then((res) => {
