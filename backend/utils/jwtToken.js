@@ -2,7 +2,7 @@ export const sendToken = (user, statusCode, res, message) => {
   const token = user.getJWTToken();
   const options = {
     expires: new Date(
-      Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
+      Date.now() + 4 * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
     secure : true,
@@ -15,4 +15,5 @@ export const sendToken = (user, statusCode, res, message) => {
     message,
     token,
   });
+
 };

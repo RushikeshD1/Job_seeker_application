@@ -23,7 +23,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "https://job-seeking-backend-deployment-rn68.onrender.com/api/v1/user/register",
+        "http://localhost:3000/api/v1/user/register",
         { name, phone, email, role, password },
         {
           headers: {

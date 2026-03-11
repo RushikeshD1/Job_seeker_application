@@ -11,7 +11,7 @@ import fileUpload from "express-fileupload";
 import cloudinary from "cloudinary";
 
 const app = express()
-config({path : "./config/config.env"})
+config()
 
 cloudinary.v2.config({
     cloud_name: process.env.CLOUDINARY_CLIENT_NAME,
@@ -29,6 +29,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended : true}))
 app.use(cookieParser())
 
+
 app.use(
     fileUpload({
       useTempFiles: true,
@@ -40,6 +41,7 @@ app.use("/api/v1/job", jobRouter);
 app.use("/api/v1/application", applicationRouter);
 
 dbConnection()
+
 
 app.use(errorMiddleware)
 
