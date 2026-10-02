@@ -10,7 +10,7 @@ const Jobs = () => {
   useEffect(() => {
     try {
       axios
-        .get("https://job-seeker-application-npnc.vercel.app/api/v1/job/getall", {
+        .get("https://jobseeker-backend-80uf.onrender.com/api/v1/job/getall", {
           withCredentials: true,
         })
         .then((res) => {

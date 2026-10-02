@@ -9,8 +9,14 @@ import { errorMiddleware } from "./middleware/error.js";
 import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
 import cloudinary from "cloudinary";
+import dns from "node:dns";
 
-const app = express()
+dns.setServers([
+    "8.8.8.8",
+    "8.8.4.4"
+]);
+
+const app = express();
 config()
 
 cloudinary.v2.config({
@@ -19,11 +25,12 @@ cloudinary.v2.config({
     api_secret: process.env.CLOUDINARY_CLIENT_SECRET,
 })
 
-app.use(cors({
-    origin: [ process.env.FRONTEND_URL], 
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], 
-    credentials: true, 
-}));
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+  })
+);
 
 app.use(express.json())
 app.use(express.urlencoded({extended : true}))
@@ -36,6 +43,11 @@ app.use(
       tempFileDir: "/tmp/",
     })
 );
+
+app.get('/' , (req, res) => {
+    res.end('server running!');
+});
+
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/job", jobRouter);
 app.use("/api/v1/application", applicationRouter);

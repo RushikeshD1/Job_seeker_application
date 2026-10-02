@@ -14,10 +14,10 @@ const Navbar = () => {
   const handleLogout = async () => {   
     try {
 
-      const response = await axios.get("https://job-seeker-application-npnc.vercel.app/api/v1/user/logout", { withCredentials : true })
+      const response = await axios.get("https://jobseeker-backend-80uf.onrender.com/api/v1/user/logout", { withCredentials : true })
       toast.success(response.data.message)
-      setIsAuthorized(false)
-      navigate("/login")
+      setIsAuthorized(false);
+      navigate("/login");
 
     } catch (error) {
 
